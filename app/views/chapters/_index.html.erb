@@ -3,28 +3,32 @@
 <h2>Chapters</h2>
 
 <section id="chapters">
-  <table class="table">
-    <thead>
-      <tr>
-        <th> # </th>
-        <th> Title </th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <p id="notice"><%= notice %></p>
+  <h2>
+    <strong>Fanfic:</strong>
+    <%#= @fanfic.chapter.fanfic_id %>
+  </h2>
+  <% @fanfic.chapters.each_with_index do |chapter,index| %>
+    <div align="center">
+      <h3>Chapter <%= index+1 %></h3>
+    </div>
+    <p>
+      <strong>Title:</strong>
+      <%= chapter.title %>
+    </p>
 
-    <tbody>
-    <% @fanfic.chapters.each do |chapter| %>
-      <tr>
-        <td><%= chapter.index %></td>
-        <td><%= link_to chapter.title, @chapter %></td>
-        <td>
-          <%= link_to 'Edit', edit_fanfic_chapter_path(chapter), class: 'btn btn-outline-primary btn-sm' %>
-          <%#= link_to 'Destroy', @fanfic.chapter, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+    <p>
+      <strong>Body:</strong>
+      <%= chapter.body %>
+    </p>
+
+
+          <%= link_to 'Edit', edit_fanfic_chapter_path(@fanfic,chapter), class: 'btn btn-outline-primary btn-sm' %>
+          <%= link_to 'Destroy', [chapter.fanfic,chapter], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %>
+  <%end %>
 </section>
 <br>
+<%= link_to 'Edit', edit_fanfic_chapter_path(@fanfic) %> |
+<%= link_to 'Back', fanfic_path %>
+
 

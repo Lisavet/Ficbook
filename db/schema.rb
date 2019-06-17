@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_095042) do
+ActiveRecord::Schema.define(version: 2019_06_17_183534) do
 
   create_table "chapters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "index"
     t.string "title"
     t.text "body"
     t.bigint "fanfic_id", null: false
