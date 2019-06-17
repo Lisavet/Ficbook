@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Genres</h1>
+
+<div class="buttons_panel">
+  <%= link_to 'New genre', new_genre_path, class: 'btn btn-outline-primary btn-sm' %>
+</div>
+
+<section id="genres">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Name </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @genres.each_with_index do |genre, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to genre.name, genre %></td>
+          <td>
+            <%= link_to 'Edit', edit_genre_path(genre), class: 'btn btn-outline-primary btn-sm' %>
+            <%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+

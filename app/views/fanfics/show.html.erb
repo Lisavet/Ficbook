@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @fanfic.title %></h1>
+<p>
+  <% if @fanfic.genre.present? %>
+    <%= link_to @fanfic.genre.name, @fanfic.genre %>
+  <%end %>
+</p>
+<hr>
+<p><%= @fanfic.body.html_safe %></p>
+<hr>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_fanfic_path(@fanfic), class: 'btn btn-warning' %>
+  <%= link_to 'Delete', fanfic_path(@fanfic), class: 'btn btn-danger', method: :delete, data: { confirm: 'You sure?' } %>
+<% end %>
+<%= link_to 'Back', fanfics_path, class: 'btn btn-outline-primary btn-sm' %>
+<hr>
+
+<div class="buttons_panel">
+<%= link_to 'New chapter', new_fanfic_chapter_path(@fanfic), class: 'btn btn-outline-primary btn-sm' %>
+</div>
+
+<%= render partial: 'chapters/index' %>
+
+<h2>Comments</h2>
+<% @fanfic.comments.each do |comment| %>
+  <div class="alert alert-light">
+    <p> <strong> <%= comment.username %> </strong>: <%= comment.body %> </p>
+  </div>
+<% end %>
+<hr>
+<% if user_signed_in? %>
+  <h2>Create comments</h2>
+  <%= form_for([@fanfic, @fanfic.comments.build]) do |f| %>
+    <p>
+      User<br>
+      <%#= @user.username %>
+      <%= f.text_field(:username, {:class => 'form-control'}) %>
+    </p>
+    <p>
+      Text comment<br>
+      <%= f.text_area(:body, {:class => 'form-control'}) %>
+    </p>
+    <p>
+      <%= f.submit("Create comment", {:class => 'btn btn-warning'}) %>
+    </p>
+  <% end %>
+<% end %>

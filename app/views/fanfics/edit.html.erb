@@ -1,0 +1,11 @@
+<h1>Editing Fanfic</h1>
+
+<% if current_user && @fanfic.user_id == current_user.id %>
+
+
+
+<%= render 'form', fanfic: @fanfic %>
+
+<span class="btn btn-outline-primary"> <%= link_to 'Show', @fanfic %> </span>
+<span class="btn btn-outline-primary"> <%= link_to 'Back', fanfics_path %> </span>
+<% end %>
