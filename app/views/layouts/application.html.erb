@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fics</title>
+    <title>Fanfics</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-    <%= yield %>
+
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-bold">Ficbook</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <span class="p-2 text-dark"> <%= link_to 'Home page', fanfics_path %> </span>
+      <span class="p-2 text-dark"> <%= link_to 'Genres', genres_path %> </span>
+      <span class="p-2 text-dark"> <%= link_to 'New story', new_fanfic_path %> </span>
+      <span class="p-2 text-dark"> <%= link_to 'User page', about_path %> </span>
+    </nav>
+    <% if user_signed_in? %>
+      <span class="btn btn-outline-primary"> <%= link_to 'Sign out', destroy_user_session_path, method: :Delete %> </span>
+    <% else %>
+      <span class="btn btn-outline-primary"> <%= link_to 'Sign in', new_user_session_path %> </span>
+      <span class="btn btn-outline-primary"> <%= link_to 'Sign up', new_user_registration_path %> </span>
+    <%end %>
+    <span class="nav-item<%= "active" if I18n.locale == :ru %>">
+      <%= link_to "Рус", { locale: :ru}, class: "nav-link" %>
+    </span>
+    <span class="nav-item<%= "active" if I18n.locale == :en %>">
+      <%= link_to "En", { locale: :en}, class: "nav-link" %>
+    </span>
+  </div>
+
+
+
+<!--    <p class="notice"><%#= notice %></p>-->
+    <p class="alert"><%= alert %></p>
+
+    <div class="row">
+      <div class="container"><%= yield %></div>
+      <div class="col-md-3">
+        <%= render 'shared/submenu' %>
+        <h3>Tags</h3>
+        <div class="tag_clound">
+          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+            <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
   </body>
+
+
 </html>

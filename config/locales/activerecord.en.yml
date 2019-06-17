@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      fanfic: 'Fanfic'
+    attributes:
+      fanfic:
+        title: 'Title'
+        body: 'Body'
+        all_tags: 'Tags'
+      genre:
+        name: 'Genre'
+    errors:
+      messages:
+        blank: "can't be blank"

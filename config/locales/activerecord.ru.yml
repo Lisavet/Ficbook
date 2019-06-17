@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+    models:
+      fanfic: 'фанфик'
+    attributes:
+      fanfic:
+        title: 'Название'
+        body: 'Описание'
+        all_tags: 'Теги'
+      genre:
+        name: 'Жанр'
+    errors:
+      messages:
+        blank: 'не может быть пустым'

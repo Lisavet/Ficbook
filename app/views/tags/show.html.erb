@@ -1,0 +1,7 @@
+<h1><%= @tag.name %></h1>
+
+<% if @tag.fanfics.empty? %>
+  <h2> Not story</h2>
+<% else %>
+  <%= render @tag.fanfics %>
+<% end %>

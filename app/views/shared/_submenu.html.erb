@@ -1,0 +1,11 @@
+<div class="submenu">
+  <h2> Genres </h2>
+  <ul class="nav nav-pills nav-stacked">
+    <% Genre.roots.each do |genre| %>
+      <li class="nav-item">
+        <%= link_to genre.name, genre, class: "nav-link #{'active' if current_page?(genre_path(genre))}" %>
+        <%= render 'shared/submenu_genres', genres: genre.root.descendants.arrange %>
+      </li>
+    <% end %>
+  </ul>
+</div>

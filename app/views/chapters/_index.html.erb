@@ -1,0 +1,30 @@
+<!--<p id="notice"><%#= notice %></p>-->
+
+<h2>Chapters</h2>
+
+<section id="chapters">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> # </th>
+        <th> Title </th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @fanfic.chapters.each do |chapter| %>
+      <tr>
+        <td><%= chapter.index %></td>
+        <td><%= link_to chapter.title, @chapter %></td>
+        <td>
+          <%= link_to 'Edit', edit_fanfic_chapter_path(chapter), class: 'btn btn-outline-primary btn-sm' %>
+          <%#= link_to 'Destroy', @fanfic.chapter, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+<br>
+

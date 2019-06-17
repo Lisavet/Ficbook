@@ -1,0 +1,19 @@
+<h2><%= link_to fanfic.title, fanfic_path(fanfic) %></h2>
+<section>
+  <% if fanfic.genre.present? %>
+    <%= link_to fanfic.genre.name, fanfic.genre %> |
+  <%end %>
+  <%= raw fanfic.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary'}.join(' ') %>
+</section>
+<!--<td><%#= fanfic.body %></td>-->
+
+
+<%# @fanfics.each do |fanfic| %>
+<!--  <tr>-->
+<!--    <td><%#= link_to fanfic.title, fanfic_path(fanfic) %></td>-->
+<!--    <td><%#= fanfic.body %></td>-->
+<!--         <td><%##= link_to 'Show', fanfic %></td>-->
+<!--         <td><%##= link_to 'Edit', edit_fanfic_path(fanfic) %></td>-->
+<!--          <td><%##= link_to 'Destroy', fanfic, method: :delete, data: {confirm: 'Are you sure?'} %></td>-->
+<!--  </tr>-->
+<%# end %>

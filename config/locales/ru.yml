@@ -1,0 +1,31 @@
+ru:
+  common:
+    errors: 'При заполнении формы возникли ошибки'
+    back: 'Назад'
+    create: 'Создать'
+    edit: 'Изменить'
+  will_paginate:
+    previous_label: '&larr; Предыдущая страница'
+    next_label: 'Следующая страница &rarr;'
+  fanfics:
+    index:
+      title: 'Фанфики'
+  admin:
+    fanfics:
+      new:
+        title: 'Новый фанфик'
+      edit:
+        title: 'Редактирование фанфика'
+      form:
+        submit:
+          '%{action} фанфик'
+    genres:
+      index:
+        title: 'Жанры'
+      new:
+        title: 'Новый жанр'
+      edit:
+        title: 'Редактирование жанра'
+      form:
+        submit:
+          '%{action} жанр'
