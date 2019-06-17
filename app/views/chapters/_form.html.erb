@@ -1,5 +1,5 @@
 
-<%= form_for :chapter, local: true  do |form| %>
+<%= form_for [:fanfic, chapter], local: true  do |form| %>
   <%# if @fanfic.chapters.errors.any? %>
 <!--    <div id="error_explanation">-->
 <!--      <h2><%#= pluralize(@fanfic.chapters.errors.count, "error") %> prohibited this chapter from being saved:</h2>-->
